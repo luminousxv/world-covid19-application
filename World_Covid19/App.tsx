@@ -1,41 +1,42 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {TabBarIcon} from './src/component/UI/atom/barIcons';
-import ConfirmedScreen from './src/component/pages/ConfirmedScreen';
-import DeathScreen from './src/component/pages/DeathScreen';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import TabScreen from './src/component/pages/TabScreen';
+import CountryScreen from './src/component/UI/molecule/CountryScreen';
+import {
+  RootStackParamList,
+  StackNavigationProp,
+} from './src/types/navigation/navigation_type';
+import {Button} from 'react-native';
 
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
+  const HeaderLeft = (): JSX.Element => {
+    const navigation = useNavigation<StackNavigationProp>();
+    return <Button title="Go Back" onPress={() => navigation.goBack()} />;
+  };
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName="Confirmed"
-          screenOptions={({route}) => ({
-            tabBarLabel: route.name,
-            tabBarIcon: ({focused}) => TabBarIcon(focused, route.name),
-            tabBarLabelPosition: 'below-icon',
-          })}>
-          <Tab.Screen
-            name="Confirmed"
-            component={ConfirmedScreen}
-            options={{
-              title: 'Total Confirmed',
-              headerStyle: {backgroundColor: '#ADD8E6'},
-            }}
+        <Stack.Navigator>
+          <Stack.Screen
+            name="TabScreen"
+            component={TabScreen}
+            options={{headerShown: false}}
           />
-          <Tab.Screen
-            name="Deaths"
-            component={DeathScreen}
-            options={{
-              title: 'Total Deaths',
-              headerStyle: {backgroundColor: '#ADD8E6'},
-            }}
+          <Stack.Screen
+            name="CountryInfo"
+            component={CountryScreen}
+            initialParams={{country: '', status: 'confirmed'}}
+            options={({route}) => ({
+              title: route.params.country_title + ' Confirmed',
+              headerLeft: ({}) => <HeaderLeft />,
+            })}
           />
-        </Tab.Navigator>
+        </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );
