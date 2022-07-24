@@ -61,11 +61,17 @@ export default function ConfirmedScreen({
             <TouchableOpacity
               style={styles.item}
               onPress={() => {
-                navigation.navigate('CountryInfo', {
-                  country: item.Slug,
-                  status: 'confirmed',
-                  country_title: item.Country,
-                });
+                if (item.Slug === 'united-states') {
+                  navigation.navigate('ModalScreen', {
+                    status: 'confirmed',
+                  });
+                } else {
+                  navigation.navigate('CountryInfo', {
+                    country: item.Slug,
+                    status: 'confirmed',
+                    country_title: item.Country,
+                  });
+                }
               }}>
               <Text>
                 {item.Country}: {item.TotalConfirmed}
@@ -81,7 +87,6 @@ export default function ConfirmedScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ADD8E6',
   },
   item: {
     padding: 10,

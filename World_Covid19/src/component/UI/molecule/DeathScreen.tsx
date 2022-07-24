@@ -9,8 +9,11 @@ import {
 } from 'react-native';
 import {fetchCovidSummary} from '../../../api/Covid19_API';
 import {Deaths, Summary} from '../../../types/Covid19_API/type';
+import {Tab_Screen_Props} from '../../../types/navigation/navigation_type';
 
-export default function DeathScreen(): ReactElement {
+export default function DeathScreen({
+  navigation,
+}: Tab_Screen_Props): ReactElement {
   const [countries, setCountries] = useState<Deaths[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -35,6 +38,7 @@ export default function DeathScreen(): ReactElement {
         {
           Country: item.Country,
           CountryCode: item.CountryCode,
+          Slug: item.Slug,
           NewDeaths: item.NewDeaths,
           TotalDeaths: item.TotalDeaths,
         },
@@ -54,7 +58,21 @@ export default function DeathScreen(): ReactElement {
         <FlatList
           data={countries}
           renderItem={({item}) => (
-            <TouchableOpacity style={styles.item}>
+            <TouchableOpacity
+              style={styles.item}
+              onPress={() => {
+                if (item.Slug === 'united-states') {
+                  navigation.navigate('ModalScreen', {
+                    status: 'deaths',
+                  });
+                } else {
+                  navigation.navigate('CountryInfo', {
+                    country: item.Slug,
+                    status: 'deaths',
+                    country_title: item.Country,
+                  });
+                }
+              }}>
               <Text>
                 {item.Country}: {item.TotalDeaths}
               </Text>
