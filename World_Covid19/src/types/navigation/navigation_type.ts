@@ -8,6 +8,9 @@ export type RootStackParamList = {
     status: StatusParams;
     country_title: string;
   };
+  FlatListScreen: {
+    status: StatusParams;
+  };
 };
 
 export type TabParamList = {
@@ -21,9 +24,18 @@ type TabNavigationProp = Tab_Props['navigation'];
 
 type Stack_Props = NativeStackScreenProps<RootStackParamList, 'CountryInfo'>;
 
+type Flatlist_Props = NativeStackScreenProps<
+  RootStackParamList,
+  'FlatListScreen'
+>;
+
 export type StackNavigationProp = Stack_Props['navigation'];
 
 type StackRouteProp = Stack_Props['route'];
+
+type FlatlistNavigationProp = Flatlist_Props['navigation'];
+
+type FlatlistRouteProp = Flatlist_Props['route'];
 
 export type Tab_Screen_Props = {
   navigation: TabNavigationProp;
@@ -32,6 +44,11 @@ export type Tab_Screen_Props = {
 export type Stack_Screen_Props = {
   navigation: StackNavigationProp;
   route: StackRouteProp;
+};
+
+export type Flatlist_Screen_Props = {
+  navigation: FlatlistNavigationProp;
+  route: FlatlistRouteProp;
 };
 
 export type ChartProp = {
