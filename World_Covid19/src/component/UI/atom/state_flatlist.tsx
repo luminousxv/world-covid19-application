@@ -1,13 +1,13 @@
 import React, {ReactElement} from 'react';
 import {View, StyleSheet, FlatList, Text} from 'react-native';
-import {Modal_Screen_Props} from '../../../types/navigation/navigation_type';
+import {Flatlist_Screen_Props} from '../../../types/navigation/navigation_type';
 import {states} from '../../../api/Covid19_API';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-export default function ModalScreen({
+export default function FlatListScreen({
   route,
   navigation,
-}: Modal_Screen_Props): ReactElement {
+}: Flatlist_Screen_Props): ReactElement {
   const {status} = route.params;
   return (
     <View style={styles.container}>

@@ -62,7 +62,7 @@ export default function ConfirmedScreen({
               style={styles.item}
               onPress={() => {
                 if (item.Slug === 'united-states') {
-                  navigation.navigate('ModalScreen', {
+                  navigation.navigate('FlatListScreen', {
                     status: 'confirmed',
                   });
                 } else {

@@ -1,23 +1,15 @@
 import React from 'react';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import TabScreen from './src/component/pages/TabScreen';
 import CountryScreen from './src/component/UI/molecule/CountryScreen';
-import {
-  RootStackParamList,
-  StackNavigationProp,
-} from './src/types/navigation/navigation_type';
-import {Button} from 'react-native';
+import {RootStackParamList} from './src/types/navigation/navigation_type';
+import FlatListScreen from './src/component/UI/atom/state_flatlist';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
-  const HeaderLeft = (): JSX.Element => {
-    const navigation = useNavigation<StackNavigationProp>();
-    return <Button title="Go Back" onPress={() => navigation.goBack()} />;
-  };
-
   return (
     <SafeAreaProvider>
       <NavigationContainer>
@@ -32,9 +24,14 @@ function App() {
             component={CountryScreen}
             initialParams={{country: '', status: 'confirmed'}}
             options={({route}) => ({
-              title: route.params.country_title + ' Confirmed',
-              headerLeft: ({}) => <HeaderLeft />,
+              title: route.params.country_title + ' ' + route.params.status,
             })}
+          />
+          <Stack.Screen
+            name="FlatListScreen"
+            component={FlatListScreen}
+            initialParams={{status: 'confirmed'}}
+            options={{title: 'Choose State'}}
           />
         </Stack.Navigator>
       </NavigationContainer>
