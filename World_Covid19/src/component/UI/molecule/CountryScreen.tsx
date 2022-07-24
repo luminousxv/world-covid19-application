@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {Stack_Screen_Props} from '../../../types/navigation/navigation_type';
 import ChartView from '../atom/chartview';
-import {fetchCountryInfo} from '../../../api/Covid19_API';
+import {fetchCountryInfo, fetchUSInfo, states} from '../../../api/Covid19_API';
 import {LiveCountryInfo} from '../../../types/Covid19_API/type';
 
 export default function CountryScreen({route}: Stack_Screen_Props) {
@@ -14,7 +14,9 @@ export default function CountryScreen({route}: Stack_Screen_Props) {
   useEffect(() => {
     const fetchDayOneTotal = async (): Promise<void> => {
       try {
-        const {data} = await fetchCountryInfo(country, status);
+        const {data} = states.some(item => item === country)
+          ? await fetchUSInfo(status, country)
+          : await fetchCountryInfo(country, status);
         sliceData(data);
         setLoading(true);
       } catch (error) {
