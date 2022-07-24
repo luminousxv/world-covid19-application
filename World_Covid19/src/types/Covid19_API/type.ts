@@ -38,6 +38,7 @@ export interface Confirmed {
 export interface Deaths {
   Country: string;
   CountryCode: string;
+  Slug: string;
   NewDeaths: number;
   TotalDeaths: number;
 }
