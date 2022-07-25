@@ -22,7 +22,6 @@ function App() {
           <Stack.Screen
             name="CountryInfo"
             component={CountryScreen}
-            initialParams={{country: '', status: 'confirmed'}}
             options={({route}) => ({
               title: route.params.country_title + ' ' + route.params.status,
             })}
