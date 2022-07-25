@@ -16,7 +16,7 @@ export interface Countries extends Global {
   Country: string;
   CountryCode: string;
   Slug: string;
-  Date: number;
+  Date: string;
 }
 
 export interface LiveCountryInfo {
@@ -33,6 +33,7 @@ export interface Confirmed {
   Slug: string;
   NewConfirmed: number;
   TotalConfirmed: number;
+  Date: string;
 }
 
 export interface Deaths {
@@ -41,6 +42,7 @@ export interface Deaths {
   Slug: string;
   NewDeaths: number;
   TotalDeaths: number;
+  Date: string;
 }
 
 export type StatusParams = 'confirmed' | 'deaths';
