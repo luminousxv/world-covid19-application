@@ -41,6 +41,7 @@ export default function DeathScreen({
           Slug: item.Slug,
           NewDeaths: item.NewDeaths,
           TotalDeaths: item.TotalDeaths,
+          Date: item.Date,
         },
       ]),
     );
@@ -62,14 +63,17 @@ export default function DeathScreen({
               style={styles.item}
               onPress={() => {
                 if (item.Slug === 'united-states') {
-                  navigation.navigate('ModalScreen', {
+                  navigation.navigate('FlatListScreen', {
                     status: 'deaths',
+                    Date: item.Date,
                   });
                 } else {
                   navigation.navigate('CountryInfo', {
                     country: item.Slug,
                     status: 'deaths',
                     country_title: item.Country,
+                    NewCases: item.NewDeaths,
+                    Date: item.Date,
                   });
                 }
               }}>

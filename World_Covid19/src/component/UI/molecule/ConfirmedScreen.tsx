@@ -41,6 +41,7 @@ export default function ConfirmedScreen({
           Slug: item.Slug,
           NewConfirmed: item.NewConfirmed,
           TotalConfirmed: item.TotalConfirmed,
+          Date: item.Date,
         },
       ]),
     );
@@ -64,12 +65,15 @@ export default function ConfirmedScreen({
                 if (item.Slug === 'united-states') {
                   navigation.navigate('FlatListScreen', {
                     status: 'confirmed',
+                    Date: item.Date,
                   });
                 } else {
                   navigation.navigate('CountryInfo', {
                     country: item.Slug,
                     status: 'confirmed',
                     country_title: item.Country,
+                    NewCases: item.NewConfirmed,
+                    Date: item.Date,
                   });
                 }
               }}>
