@@ -7,9 +7,12 @@ export type RootStackParamList = {
     country: string;
     status: StatusParams;
     country_title: string;
+    NewCases: number;
+    Date: string;
   };
   FlatListScreen: {
     status: StatusParams;
+    Date: string;
   };
 };
 
@@ -54,4 +57,11 @@ export type Flatlist_Screen_Props = {
 export type ChartProp = {
   cases: number[];
   dates: string[];
+};
+
+export type TableProp = {
+  country: string;
+  newcases: number;
+  total: number;
+  date: string;
 };
