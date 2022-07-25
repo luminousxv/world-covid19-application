@@ -26,6 +26,11 @@ export function fetchUSInfo(
   return axios.get(url, {params: {province: states}});
 }
 
+export function calcNewCases(data: LiveCountryInfo[]): number {
+  const newCases = data[data.length - 1].Cases - data[data.length - 2].Cases;
+  return newCases;
+}
+
 export const states: string[] = [
   'Alabama',
   'Alaska',
