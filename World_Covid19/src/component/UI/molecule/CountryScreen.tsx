@@ -2,14 +2,21 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {Stack_Screen_Props} from '../../../types/navigation/navigation_type';
 import ChartView from '../atom/chartview';
-import {fetchCountryInfo, fetchUSInfo, states} from '../../../api/Covid19_API';
+import {
+  fetchCountryInfo,
+  fetchUSInfo,
+  calcNewCases,
+  states,
+} from '../../../api/Covid19_API';
 import {LiveCountryInfo} from '../../../types/Covid19_API/type';
+import NewCasesView from '../atom/newcases';
 
 export default function CountryScreen({route}: Stack_Screen_Props) {
-  const {country, status} = route.params;
+  const {country, status, country_title, NewCases, Date} = route.params;
   const [cases, setCases] = useState<number[]>([0]);
   const [dates, setDates] = useState<string[]>(['']);
   const [loading, setLoading] = useState<boolean>(false);
+  const [newcases, setNewCases] = useState<number>(0);
 
   useEffect(() => {
     const fetchDayOneTotal = async (): Promise<void> => {
@@ -19,6 +26,11 @@ export default function CountryScreen({route}: Stack_Screen_Props) {
           : await fetchCountryInfo(country, status);
         sliceData(data);
         setLoading(true);
+        if (states.some(item => item === country)) {
+          setNewCases(calcNewCases(data));
+        } else {
+          setNewCases(NewCases);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -41,7 +53,17 @@ export default function CountryScreen({route}: Stack_Screen_Props) {
   } else {
     return (
       <View>
-        <ChartView cases={cases} dates={dates} />
+        <View>
+          <ChartView cases={cases} dates={dates} />
+        </View>
+        <View>
+          <NewCasesView
+            country={country_title}
+            newcases={newcases}
+            total={cases[cases.length - 1]}
+            date={Date}
+          />
+        </View>
       </View>
     );
   }
