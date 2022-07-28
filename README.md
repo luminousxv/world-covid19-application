@@ -11,3 +11,26 @@ World Covid-19 Application (from [Inflearn TS 실전 강좌](https://github.com/
 - [React Navigation](https://reactnavigation.org)
 - [Axios](https://github.com/axios/axios)
 - [react-native-vector-icons(Ionicons)](https://github.com/oblador/react-native-vector-icons#bundled-icon-sets)
+- [react-native-chart-kit](https://github.com/indiespirit/react-native-chart-kit)
+
+## API
+- [Coronavirus COVID19 API](https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest)
+
+## What it looks like
+### App Start Screen
+<img src='./images/HomeScreen.gif'>
+
+### Confirmed / Deaths Screen
+<img src='./images/Confirmed_Deaths.gif'>
+
+### US Confirmed Screen
+<img src='./images/US_Confirmed.gif'>
+
+### Country Confirmed Screen
+<img src='./images/Confirmed_CountryInfo.gif'>
+
+### Country Detailed Screen
+<img src='./images/Details.gif'>
+
+### Country Death Screen
+<img src='./images/Deaths_CountryInfo.gif'>
