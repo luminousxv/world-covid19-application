@@ -45,4 +45,9 @@ export interface Deaths {
   Date: string;
 }
 
+export interface Details {
+  cases: number;
+  date: string;
+}
+
 export type StatusParams = 'confirmed' | 'deaths';
