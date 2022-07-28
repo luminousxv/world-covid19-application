@@ -66,6 +66,7 @@ export default function DeathScreen({
                   navigation.navigate('FlatListScreen', {
                     status: 'deaths',
                     Date: item.Date,
+                    NewCases: item.NewDeaths,
                   });
                 } else {
                   navigation.navigate('CountryInfo', {
@@ -99,6 +100,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 10,
+    backgroundColor: '#ffffff',
     borderColor: '#ADD8E6',
   },
   loading: {
