@@ -8,7 +8,7 @@ export default function FlatListScreen({
   route,
   navigation,
 }: Flatlist_Screen_Props): ReactElement {
-  const {status, Date} = route.params;
+  const {status, Date, NewCases} = route.params;
   return (
     <View style={styles.container}>
       <FlatList
@@ -22,7 +22,7 @@ export default function FlatListScreen({
                 status: status,
                 country_title: item,
                 Date: Date,
-                NewCases: 0,
+                NewCases: NewCases,
               });
             }}>
             <Text>{item}</Text>
