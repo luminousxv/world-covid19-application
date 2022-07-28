@@ -66,6 +66,7 @@ export default function ConfirmedScreen({
                   navigation.navigate('FlatListScreen', {
                     status: 'confirmed',
                     Date: item.Date,
+                    NewCases: item.NewConfirmed,
                   });
                 } else {
                   navigation.navigate('CountryInfo', {
