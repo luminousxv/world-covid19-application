@@ -18,19 +18,19 @@ World Covid-19 Application (from [Inflearn TS 실전 강좌](https://github.com/
 
 ## What it looks like
 ### App Start Screen
-<img src='./images/HomeScreen.gif'>
+<img src='./images/HomeScreen.gif' width=300>
 
 ### Confirmed / Deaths Screen
-<img src='./images/Confirmed_Deaths.gif'>
+<img src='./images/Confirmed_Deaths.gif' width=300>
 
 ### US Confirmed Screen
-<img src='./images/US_Confirmed.gif'>
+<img src='./images/US_Confirmed.gif' width=300>
 
 ### Country Confirmed Screen
-<img src='./images/Confirmed_CountryInfo.gif'>
+<img src='./images/Confirmed_CountryInfo.gif' width=300>
 
 ### Country Detailed Screen
-<img src='./images/Details.gif'>
+<img src='./images/Details.gif' width=300>
 
 ### Country Death Screen
-<img src='./images/Deaths_CountryInfo.gif'>
+<img src='./images/Deaths_CountryInfo.gif' width=300>
